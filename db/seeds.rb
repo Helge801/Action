@@ -1,7 +1,50 @@
-def em output
-  puts "*" * 200
-  puts "   " + output
-  puts "*" * 200
+require 'faker'
+
+def em string
+  puts "*" * 50
+  puts "   " + string
+  puts "*" * 50
+end
+
+def get_long_content
+  Faker::HitchhikersGuideToTheGalaxy.quote +
+  Faker::HeyArnold.quote +
+  Faker::HowIMetYourMother.quote +
+  Faker::Movie.quote +
+  Faker::Seinfeld.quote +
+  Faker::Dune.quote +
+  Faker::HitchhikersGuideToTheGalaxy.quote +
+  Faker::HeyArnold.quote +
+  Faker::HowIMetYourMother.quote +
+  Faker::Movie.quote +
+  Faker::Seinfeld.quote +
+  Faker::Dune.quote +
+  Faker::HitchhikersGuideToTheGalaxy.quote +
+  Faker::HeyArnold.quote +
+  Faker::HowIMetYourMother.quote +
+  Faker::Movie.quote +
+  Faker::Seinfeld.quote +
+  Faker::Dune.quote
+end
+
+def get_short_content
+  Faker::HitchhikersGuideToTheGalaxy.quote +
+  Faker::HeyArnold.quote
+end
+
+def get_random_quote
+  case [*1..6].sample
+    when 1 then Faker::HitchhikersGuideToTheGalaxy.quote
+    when 2 then Faker::HeyArnold.quote
+    when 3 then Faker::HowIMetYourMother.quote
+    when 4 then Faker::Movie.quote
+    when 5 then Faker::Seinfeld.quote
+    when 6 then Faker::Dune.quote
+  end
+end
+
+def get_profile_image
+  "http://placebeard.it/#{[*145..155].sample}/#{[*145..155].sample}"
 end
 
 em "Creating Users"
@@ -30,3 +73,24 @@ em "Creating random things"
                               )
   puts rando.inspect
 end
+
+em "Creating comments"
+
+20.times do |i|
+  comment = Comment.create!(user_id: rand(1..user_count),
+                            body: get_short_content)
+  puts comment.inspect
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
