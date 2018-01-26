@@ -1,0 +1,2 @@
+module RandomThingsHelper
+end
